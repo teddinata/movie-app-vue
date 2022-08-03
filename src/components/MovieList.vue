@@ -1,7 +1,7 @@
 <template>
   <div id="movie-container">
   
-  <Movie v-for="movie in movies" :key="movie.id" :movie="movie" />
+  <movie v-for="movie in movies" :key="movie.id" :movie="movie" />
   </div>
 </template>
 
@@ -17,12 +17,12 @@ export default {
         };
     },
     computed: {
-        // movies() {
-        //     return this.$store.getters.getMovies;
-        // }
+        movies() {
+            return this.$store.getters.getMovies;
+        },
     },
     created() {
-       this.movies = this.$store.getters.getMovies;
+      //  this.movies = this.$store.getters.getMovies;
     }
 }
 </script>
