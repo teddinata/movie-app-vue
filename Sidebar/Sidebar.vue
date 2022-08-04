@@ -79,7 +79,7 @@
 						required
 						v-model="form.storyline"
 						placeholder="Storyline"
-						rows="2"
+						rows="6"
 					/>
 				</form>
 			</template>
@@ -124,7 +124,6 @@
 			addMovie(e) {
 				e.preventDefault();
 
-				// console.log('SUBMIT', this.form);
 				this.$store.dispatch("addMovie", this.form);
 				this.showModal = false;
 			},

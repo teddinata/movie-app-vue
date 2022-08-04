@@ -1,6 +1,9 @@
 import movieList from '../../assets/movie-list.js';
 const SET_SEARCH = "SET_SEARCH"
 const SET_FILTER = "SET_FILTER"
+const ADD_MOVIE = "ADD_MOVIE"
+const DELETE_MOVIE = "DELETE_MOVIE"
+const UPDATE_MOVIE = "UPDATE_MOVIE"
 
 const state = {
     movies: movieList,
@@ -18,7 +21,27 @@ const mutations = {
 
     [SET_FILTER](state, filter) {
         state.filter = filter
+    },
+
+    [ADD_MOVIE](state, movie) {
+        state.movies.push(movie)
+    },
+
+    [DELETE_MOVIE](state, id) {
+        state.movies.splice(state.movies.findIndex(movie => movie.id === id), 1)
+    },
+
+    [UPDATE_MOVIE](state, movie) {
+        state.movies = state.movies.map(oldMovie => {
+            if(movie.id === oldMovie.id) {
+                return movie
+            }
+
+            return oldMovie
+        })
     }
+
+
 }
 
 const actions = {
@@ -27,6 +50,14 @@ const actions = {
     },
     filter({ commit }, filter) {
         commit(SET_FILTER, filter)
+    },
+    addMovie({ commit, state }, movie) {
+        movie.id = state.movies.length + 1
+        commit(ADD_MOVIE, movie)
+    },
+
+    deleteMovie({ commit }, id) {
+        commit(DELETE_MOVIE, id)
     }
 }
 
