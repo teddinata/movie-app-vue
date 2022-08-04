@@ -7,6 +7,13 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  {
+    path: '/movie-preview/:id',
+    name: 'moviePreview',
+    component: () => import('../views/MoviePreview.vue'),
+    props: true,
+  },
+
 ]
 
 const router = createRouter({
